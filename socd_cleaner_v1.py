@@ -1,7 +1,7 @@
 # SOCD cleaner v1 (snap tap) script for python as Autohotkey wasn't reliable enough.
 #
 # setup instructions
-# pip install interception-python / ref:https://github.com/kennyhml/pyinterception
+# pip install interception-python==1.5.2 / ref:https://github.com/kennyhml/pyinterception
 # pip install pywin32
 # install driver as instructed -> https://github.com/oblitum/Interception
 # reboot
