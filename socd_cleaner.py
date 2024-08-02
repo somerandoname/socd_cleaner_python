@@ -1,4 +1,4 @@
-# SOCD cleaner v1 (snap tap) script for python as Autohotkey wasn't reliable enough.
+# SOCD cleaner v1.0.1 (snap tap) script for python as Autohotkey wasn't reliable enough.
 #
 # setup instructions
 # pip install interception-python==1.5.2 / ref:https://github.com/kennyhml/pyinterception
