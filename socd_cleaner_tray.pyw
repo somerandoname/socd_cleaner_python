@@ -1,8 +1,8 @@
-# SOCD cleaner v1.0.0 (snap tap) script for python as Autohotkey wasn't reliable enough.
+# SOCD cleaner v1.1.0 (snap tap) script for python as Autohotkey wasn't reliable enough.
 # This version adds a tray icon with context menu for toggling of the SOCD cleaning function.
 #
 # setup instructions
-# pip install interception-python==1.5.2 / ref:https://github.com/kennyhml/pyinterception
+# pip install interception-python==1.6.2 / ref:https://github.com/kennyhml/pyinterception
 # pip install pywin32
 # install driver as instructed -> https://github.com/oblitum/Interception
 # reboot
@@ -29,6 +29,18 @@ def initialize_interception():
     context.set_filter(interception.is_keyboard, interception.FilterKeyFlag.FILTER_KEY_ALL)  # Filter to capture all keyboard events
     return context
 
+def key_map(key):
+    """
+    Helper function to get the scan code of a given key.
+    
+    Args:
+        key (str): The key character for which to get the scan code.
+        
+    Returns:
+        int: The scan code of the key.
+    """
+    return interception.get_key_information(key).scan_code
+
 def create_key_mappings():
     """
     Creates the key state dictionary and opposite key mappings.
@@ -37,13 +49,12 @@ def create_key_mappings():
         key_state (dict): Dictionary to track the state of keys (True if pressed, False if released).
         opposite_keys (dict): Dictionary to map each key to its opposite direction.
     """
-    key_map = interception.KEYBOARD_MAPPING  # Mapping from characters to key codes
-    key_state = {key_map[char]: False for char in 'wasd'}  # Initialize key state for 'W', 'A', 'S', 'D' keys
+    key_state = {key_map(char): False for char in 'wasd'}  # Initialize key state for 'W', 'A', 'S', 'D' keys
     opposite_keys = {
-        key_map['w']: key_map['s'],
-        key_map['a']: key_map['d'],
-        key_map['s']: key_map['w'],
-        key_map['d']: key_map['a'],
+        key_map('w'): key_map('s'),
+        key_map('a'): key_map('d'),
+        key_map('s'): key_map('w'),
+        key_map('d'): key_map('a'),
     }
     return key_state, opposite_keys
 
