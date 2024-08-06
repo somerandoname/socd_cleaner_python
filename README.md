@@ -5,7 +5,7 @@ The script uses the [Python port of Interception](https://github.com/kennyhml/py
 The socd_cleaner.py is just the SOCD cleaning script, whereas the socd_cleaner_tray.pyw also includes a tray icon with context menu for toggling of the script.
 
 Setup instructions:    
-> pip install interception-python==1.5.2    
+> pip install interception-python==1.6.2    
 pip install pywin32    
 install driver as instructed -> https://github.com/oblitum/Interception    
 reboot
